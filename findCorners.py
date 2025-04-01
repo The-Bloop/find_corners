@@ -22,24 +22,28 @@ if __name__ == "__main__":
                 screen.fill((0,0,0))
                 if(event.key == K_BACKSPACE):
                     print("Sike")
+
+                # Rotates the Cube 45 degrees along X axis
                 elif(event.key == K_x):
-                    #print("Enter Angle for Rotation along X axis")
-                    #angleX = int(input())
                     cube1.transform(45, "x")
+                
+                # Rotates the Cube 45 degrees along Y axis
                 elif(event.key == K_y):
-                    #print("Enter Angle for Rotation along Y axis")
-                    #angleY = int(input())
                     cube1.transform(45, "y")
+
+                # Rotates the Cube 45 degrees along Z axis
                 elif(event.key == K_z):
-                    #print("Enter Angle for Rotation along Z axis")
-                    #angleZ = int(input())
                     cube1.transform(45, "z")
+
                 elif(event.key == K_ESCAPE):
                     print('Bye Bye.')
                     gameOn = False
 
+                #Generates the Transformed Cube.
                 for line in cube1.lines:
                     pygame.draw.line(screen, (255,255,255), (line.point1.x + 500, line.point1.y + 500), (line.point2.x + 500, line.point2.y + 500))
+
+                #Generates the New Corner Points
                 points = cube1.findCornerPoints()
                 for point in points:
                     pygame.draw.circle(screen,(255, 0, 0), (point.x + 500, point.y + 500), 2)

@@ -36,6 +36,7 @@ class Cube:
         self.lines.append(Line(self.points[2], self.points[6]))
         self.lines.append(Line(self.points[3], self.points[7]))
 
+    #To transform the Cube
     def transform(self, angle, axis):
 
         for point in self.points:
@@ -45,6 +46,9 @@ class Cube:
 
         self.createLines()
 
+    # To Find New Corner Points:
+    # In an Orthographic view, if the faces aren't parallel to the X-Y-Z Planes, the Nearest and the Farthest point from the screen do not form Corner points. 
+    # So, we find the set of nearest and furthest points from the screen (Which is along the Z axis), and not include them in the List of Corner Points.
     def findCornerPoints(self):
         points = []
         zs = self.zArray()
@@ -61,7 +65,7 @@ class Cube:
 
         return points
 
-
+    # To Find the unique Z values of all the vertices.
     def zArray(self):
         zs = {0}
         for point in self.points:
